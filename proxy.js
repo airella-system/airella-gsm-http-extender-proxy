@@ -17,7 +17,7 @@ const requestListener = function (request, response) {
         message: "Incorrect data"
       }))
     } else {
-      let httpType = checkHttpTypr(proxyData['url']);
+      let httpType = checkHttpType(proxyData['url']);
       let connector = httpType === 'http' ? http : https
       let [hostname, port, path] = getUrlData(proxyData['url'], httpType)
 
@@ -67,8 +67,8 @@ const requestListener = function (request, response) {
   }
 }
 
-const server = http.createServer(requestListener);
-server.listen(8080);
+const server = http.createServer(requestListener)
+server.listen(8080)
 
 function valid(data) {
   let requireProperty = ['method', 'url']
@@ -78,9 +78,9 @@ function valid(data) {
     if(!params.includes(item)) return true;
   }
   for(let item of optionalProperty) {
-    if(!params.includes(item)) data[item] = "";
+    if(!params.includes(item)) data[item] = ""
   }
-  return true;
+  return true
 }
 
 function parseGetUrl(args) {
@@ -95,10 +95,10 @@ function parseGetUrl(args) {
   return getParams
 }
 
-function checkHttpTypr(url) {
-  if(url.indexOf('http://') === 0) return "http";
-  if(url.indexOf('https://') === 0) return "https";
-  return "";
+function checkHttpType(url) {
+  if(url.indexOf('http://') === 0) return 'http'
+  if(url.indexOf('https://') === 0) return 'https'
+  return ""
 }
 
 function getUrlData(url, httpType) {
@@ -116,7 +116,7 @@ function getUrlData(url, httpType) {
     path = chunk.substring(slashPosition)
 
     let portPosition = hostname.indexOf(':')
-    if(portPosition!== -1){
+    if(portPosition !== -1) {
       port = hostname.substring(portPosition)
       hostname = hostname.substring(0, portPosition)
     }
