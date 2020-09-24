@@ -6,7 +6,7 @@
 	"method": "get",
 	"url": "http://airella.cyfrogen.com/api/stations",
 	"headers": {
-		"AuthToken": "pies",
+		"AuthToken": "sfg24tadg42gshSR433GFSsfhHE3",
 		"Content-Type": "application/json"
 	},
 	"data": {
