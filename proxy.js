@@ -10,6 +10,14 @@ const requestListener = function (request, response) {
   });
 
   request.on('end', function() {
+    if(!proxyData) {
+      makeProxyResponse(500, JSON.stringify({
+        status: "fail",
+        message: "No required data"
+      }))
+      return
+    }
+
     proxyData = JSON.parse(proxyData)
 
     if(!valid(proxyData)) {
