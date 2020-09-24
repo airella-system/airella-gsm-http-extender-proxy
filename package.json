@@ -1,0 +1,19 @@
+{
+  "name": "airella-gsm-http-extender-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "proxy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airella-system/airella-gsm-http-extender-proxy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/airella-system/airella-gsm-http-extender-proxy/issues"
+  },
+  "homepage": "https://github.com/airella-system/airella-gsm-http-extender-proxy#readme"
+}
