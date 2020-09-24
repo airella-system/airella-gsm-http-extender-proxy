@@ -1,5 +1,6 @@
 const https = require('https');
 const http = require('http');
+const APP_PORT = process.env.PORT || 8080
 
 const requestListener = function (request, response) {
   var proxyData = ''
@@ -68,7 +69,7 @@ const requestListener = function (request, response) {
 }
 
 const server = http.createServer(requestListener)
-server.listen(8080)
+server.listen(APP_PORT)
 
 function valid(data) {
   let requireProperty = ['method', 'url']
