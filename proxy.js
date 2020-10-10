@@ -41,7 +41,7 @@ const requestListener = function (request, response) {
           path += separator + parseGetUrl(proxyData['data'])
         }
       } else if(lowerMethod === "post" || lowerMethod === "put") {
-        proxyData['headers']['Content-Length'] = proxyData['data'].lenght
+        proxyData['headers']['Content-Length'] = JSON.stringify(proxyData['data']).length
       }
 
       let options = {
