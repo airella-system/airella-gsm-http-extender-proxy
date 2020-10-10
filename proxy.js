@@ -19,8 +19,9 @@ const requestListener = function (request, response) {
       return
     }
 
+    if(DEBUG) console.log("Before parse")
+    if(DEBUG) console.log(proxyData)
     proxyData = JSON.parse(proxyData)
-
     if(DEBUG) console.log(proxyData)
 
     if(!valid(proxyData)) {
