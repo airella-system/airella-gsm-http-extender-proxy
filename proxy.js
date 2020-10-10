@@ -43,13 +43,14 @@ const requestListener = function (request, response) {
       } else if(lowerMethod === "post" || lowerMethod === "put") {
         proxyData['headers']['Content-Length'] = JSON.stringify(proxyData['data']).length
       }
+      proxyData['headers']['Content-Type'] = 'application/json'
 
       let options = {
         hostname: hostname,
         port: port,
         path: path,
         method: proxyData['method'],
-        headers: proxyData['headers']
+        headers: proxyData['headers'],
       }
       
       const proxyRequest = connector.request(options, destResponse => {
@@ -60,6 +61,7 @@ const requestListener = function (request, response) {
         })
 
         destResponse.on('end', function () {
+          if(DEBUG) console.log("Airlla")
           if(DEBUG) console.log(receivedData)
           makeProxyResponse(destResponse.statusCode, receivedData)
         });
