@@ -1,6 +1,7 @@
 const https = require('https');
 const http = require('http');
 const APP_PORT = process.env.PORT || 8080
+const DEBUG = true
 
 const requestListener = function (request, response) {
   var proxyData = ''
@@ -19,6 +20,8 @@ const requestListener = function (request, response) {
     }
 
     proxyData = JSON.parse(proxyData)
+
+    if(DEBUG) console.log(proxyData)
 
     if(!valid(proxyData)) {
       makeProxyResponse(500, JSON.stringify({
@@ -56,6 +59,7 @@ const requestListener = function (request, response) {
         })
 
         destResponse.on('end', function () {
+          if(DEBUG) console.log(receivedData)
           makeProxyResponse(destResponse.statusCode, receivedData)
         });
       })
