@@ -67,6 +67,8 @@ const requestListener = function (request, response) {
         destResponse.on('end', function () {
           if(DEBUG) console.log("Airella")
           if(DEBUG) console.log(receivedData)
+          if(DEBUG) console.log("Data")
+          if(DEBUG) console.log(JSON.stringify(proxyData['data']))
           makeProxyResponse(destResponse.statusCode, receivedData)
         });
       })
