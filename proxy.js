@@ -22,6 +22,7 @@ const requestListener = function (request, response) {
     if(DEBUG) console.log("Before parse")
     if(DEBUG) console.log(proxyData)
     proxyData = JSON.parse(proxyData)
+    if(DEBUG) console.log("Parsed")
     if(DEBUG) console.log(proxyData)
 
     if(!valid(proxyData)) {
@@ -52,6 +53,9 @@ const requestListener = function (request, response) {
         method: proxyData['method'],
         headers: proxyData['headers'],
       }
+
+      if(DEBUG) console.log("Options")
+      if(DEBUG) console.log(options)
       
       const proxyRequest = connector.request(options, destResponse => {
         let receivedData = ''
@@ -61,7 +65,7 @@ const requestListener = function (request, response) {
         })
 
         destResponse.on('end', function () {
-          if(DEBUG) console.log("Airlla")
+          if(DEBUG) console.log("Airella")
           if(DEBUG) console.log(receivedData)
           makeProxyResponse(destResponse.statusCode, receivedData)
         });
