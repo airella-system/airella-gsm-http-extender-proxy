@@ -41,8 +41,6 @@ const requestListener = function (request, response) {
         if(proxyData['data'] !== '') {
           path += separator + parseGetUrl(proxyData['data'])
         }
-      } else if(lowerMethod === "post" || lowerMethod === "put") {
-        //proxyData['headers']['Content-Length'] = JSON.stringify(proxyData['data']).length
       }
       proxyData['headers']['Content-Type'] = 'application/json'
 
@@ -59,7 +57,6 @@ const requestListener = function (request, response) {
 
       if(DEBUG) console.log("Data")
       if(DEBUG) console.log(JSON.stringify(proxyData['data']))
-      if(DEBUG) console.log(JSON.stringify(proxyData['data']).length)
       
       const proxyRequest = connector.request(options, destResponse => {
         let receivedData = ''
