@@ -3,6 +3,8 @@ const http = require('http');
 const APP_PORT = process.env.PORT || 8080
 const DEBUG = true
 
+console.log(JSON.stringify('{"privacyMode":"PRIVATE","id":"heaterTemp","name":"Heater temperature","type":"MULTIPLE_FLOATS","metric":"°C","chartType":"LINE"}').length)
+
 const requestListener = function (request, response) {
   var proxyData = ''
 
@@ -58,7 +60,8 @@ const requestListener = function (request, response) {
       if(DEBUG) console.log(options)
 
       if(DEBUG) console.log("Data")
-        if(DEBUG) console.log(JSON.stringify(proxyData['data']))
+      if(DEBUG) console.log(JSON.stringify(proxyData['data']))
+      if(DEBUG) console.log(JSON.stringify(proxyData['data']).length)
       
       const proxyRequest = connector.request(options, destResponse => {
         let receivedData = ''
