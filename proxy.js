@@ -56,6 +56,9 @@ const requestListener = function (request, response) {
 
       if(DEBUG) console.log("Options")
       if(DEBUG) console.log(options)
+
+      if(DEBUG) console.log("Data")
+        if(DEBUG) console.log(JSON.stringify(proxyData['data']))
       
       const proxyRequest = connector.request(options, destResponse => {
         let receivedData = ''
@@ -67,8 +70,6 @@ const requestListener = function (request, response) {
         destResponse.on('end', function () {
           if(DEBUG) console.log("Airella")
           if(DEBUG) console.log(receivedData)
-          if(DEBUG) console.log("Data")
-          if(DEBUG) console.log(JSON.stringify(proxyData['data']))
           makeProxyResponse(destResponse.statusCode, receivedData)
         });
       })
