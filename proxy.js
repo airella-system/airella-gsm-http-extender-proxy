@@ -11,6 +11,11 @@ const requestListener = function (request, response) {
   });
 
   request.on('end', function() {
+    if(request.url.endsWith("/date")) {
+      makeProxyResponse(200, Math.floor(Date.now() / 1000).toString())
+      return
+    }
+
     if(!proxyData) {
       makeProxyResponse(500, JSON.stringify({
         status: "fail",
